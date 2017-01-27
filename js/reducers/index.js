@@ -7,7 +7,8 @@ const initialState = {
 	result: 'Make Your Guess!',
 	userGuess: '',
 	guessCounter: 0,
-	guesses: []
+	guesses: [],
+	randomNumber: Math.floor(Math.random() * 100)
 };
 
 function determineOutcome(userGuess, randomNumber) {
@@ -27,7 +28,7 @@ function changeCounter(guessCounter) {
 	return newCounter;
 }
 
-export default function gameReducer(state=initialState, action) {
+export const gameReducer = (state=initialState, action) => {
 	switch(action.type) {
 		case types.SUBMIT_GUESS:
 			let userGuess = action.userGuess,
@@ -47,6 +48,8 @@ export default function gameReducer(state=initialState, action) {
 					$push: [userGuess]
 				}
 			});
+
+			console.log(newState_1);
 
 			return newState_1;
 		default:

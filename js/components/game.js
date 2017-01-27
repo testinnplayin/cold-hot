@@ -1,10 +1,11 @@
 'use strict';
 
 import React from 'react';
+import {connect} from 'react-redux';
 
 import GameBoard from './game-board';
 
-export default class Game extends React.Component {
+export class Game extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -20,3 +21,5 @@ export default class Game extends React.Component {
 		);
 	}
 };
+
+export default connect()(Game);
