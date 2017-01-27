@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import GameBoard from './game-board';
+
 export default class Game extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,6 +15,7 @@ export default class Game extends React.Component {
 				<button type="button" className="instructionsButton">Instructions</button>
 				<button type="button" className="newGameButton">New Game</button>
 				<h1>Hot 'N' Cold</h1>
+				<GameBoard />
 			</div>
 		);
 	}
