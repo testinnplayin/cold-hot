@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import GuessForm from './guess-form';
+
 export default class GameBoard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,10 +20,7 @@ export default class GameBoard extends React.Component {
 		return (
 			<main className="gameBoard">
 				<p><span>{this.state.result}</span></p>
-				<form onSubmit={this.submitGuess}>
-					<input type="text" name="userGuess" autoComplete="off" placeholder="Enter Your Guess"/>
-					<button type="submit">Guess</button>
-				</form>
+				<GuessForm />
 				<p><span>Guess # {this.state.guessCounter}</span></p>
 				<p><span>{this.state.guesses}</span></p>
 			</main>
