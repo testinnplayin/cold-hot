@@ -21,9 +21,10 @@ export class GameBoard extends React.Component {
 	}
 
 	submitGuess(e) {
+		console.log('!');
 		e.preventDefault();
 		e.stopPropagation();
-		const userGuess = this.userGuessInput.value;
+		const userGuess = this.props.userGuessInput.value;
 		let randomNumber = this.props.state.randomNumber,
 			guessCounter = this.props.state.guessState;
 		console.log('submit triggered');
@@ -37,7 +38,7 @@ export class GameBoard extends React.Component {
 		return (
 			<main className="gameBoard">
 				<p><span>{this.state.result}</span></p>
-				<GuessForm onSubmit={this.onSubmit} />
+				<GuessForm onSubmit={this.submitGuess} temp="xyz" />
 				<p><span>Guess # {this.state.guessCounter}</span></p>
 				<p><span>{this.state.guesses}</span></p>
 			</main>
