@@ -14,12 +14,12 @@ const initialState = {
 function determineOutcome(userGuess, randomNumber) {
 	if (userGuess === randomNumber) {
 		return 'Got It!';
-	} else if ((userGuess > randomNumber + 5) || (userGuess < randomNumber - 5)) {
-		return 'Hot';
-	} else if ((userGuess > randomNumber + 10) || (userGuess < randomNumber + 10)) {
+	} else if (Math.abs(randomNumber - userGuess) <= 5) {
+		return 'Hot!';
+	} else if (Math.abs(randomNumber - userGuess) > 5 && Math.abs(randomNumber - userGuess) <= 10) {
 		return 'Warm';
 	} else {
-		return 'Cold';
+		return "Cold";
 	}
 }
 

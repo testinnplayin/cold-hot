@@ -7,6 +7,7 @@ import GuessForm from './guess-form';
 
 export class GameBoard extends React.Component {
 	constructor(props) {
+		// debugger;
 		super(props);
 		console.log(props);
 		this.state = {
@@ -21,7 +22,8 @@ export class GameBoard extends React.Component {
 	}
 
 	submitGuess(e) {
-		console.log('!');
+		console.log('!!!!!!!!!!!');
+		// debugger;
 		e.preventDefault();
 		e.stopPropagation();
 		const userGuess = this.props.userGuessInput.value;
@@ -35,10 +37,11 @@ export class GameBoard extends React.Component {
 	}
 
 	render() {
+		window.thing = this.submitGuess;
 		return (
 			<main className="gameBoard">
 				<p><span>{this.state.result}</span></p>
-				<GuessForm onSubmit={this.submitGuess} temp="xyz" />
+				<GuessForm onSubmit={this.submitGuess} />
 				<p><span>Guess # {this.state.guessCounter}</span></p>
 				<p><span>{this.state.guesses}</span></p>
 			</main>
