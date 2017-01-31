@@ -5,7 +5,7 @@ import * as types from '../actions/index';
 
 const initialState = {
 	result: 'Make Your Guess!',
-	userGuess: 'Enter Your Guess',
+	userGuess: '',
 	guessCounter: 0,
 	guesses: [],
 	randomNumber: getRandomNumber()
@@ -36,21 +36,11 @@ function changeCounter(guessCounter) {
 export const gameReducer = (state=initialState, action) => {
 	switch(action.type) {
 		case types.SUBMIT_GUESS:
-			let guess = action.userGuess,
-				randomNumber = action.randomNumber,
-				guessCounter = action.guessCounter,
-				resultComp = determineOutcome(userGuess, randomNumber),
-				newCounter = changeCounter(guessCounter);
+			let guess = action.guess
 
 			const newState_1 = update(state, {
-				result: {
-					$set: resultComp
-				},
-				counter: {
-					$set: newCounter
-				},
-				guesses: {
-					$push: [guess]
+				guess: {
+					$set: guess
 				}
 			});
 
@@ -69,6 +59,19 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_2);
 
 			return newState_2;
+		case types.CHANGE_COUNTER:
+			let guessCounter = action.guessCounter,
+				newCounter = changeCounter(guessCounter);
+
+			const newState_3 = update(state, {
+				guessCounter: {
+					$set: newCounter
+				}
+			});
+
+			console.log(newState_3);
+
+			return newState_3;
 		default:
 			return state;
 	}

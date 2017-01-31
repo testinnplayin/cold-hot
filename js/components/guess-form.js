@@ -25,17 +25,17 @@ export class GuessForm extends React.Component {
 		e.preventDefault();
 		e.stopPropagation();
 		
-		const guess = this.props.userGuess;
-		let randomNumber = this.props.randomNumber,
-			guessCounter = this.props.guessState;
+		const guess = this.props.userGuess,
+			guessCounter = this.props.guessCounter;
 		
-		this.props.dispatch(actions.submitGuess(guess, randomNumber, guessCounter));
+		this.props.dispatch(actions.submitGuess(guess));
+		this.props.dispatch(actions.changeCounter(guessCounter));
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleOnSubmit}>
-					<input type="text" name="userGuess" autoComplete="off" onChange={this.handleOnChange} />
+					<input type="text" name="userGuess" autoComplete="off" onChange={this.handleOnChange} placeholder="Enter Your Guess" />
 					<button type="submit">Guess</button>
 			</form>
 		);

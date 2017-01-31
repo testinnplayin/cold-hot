@@ -16,9 +16,9 @@ export class GameBoard extends React.Component {
 		return (
 			<main className="gameBoard">
 				<p><span>{this.props.result}</span></p>
-				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} />
+				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} guessCounter={this.props.guessCounter} />
 				<p><span>Guess # {this.props.guessCounter}</span></p>
-				<p><span>{this.props.guesses[0]}</span></p>
+				<p><span>{this.props.guesses}</span></p>
 			</main>
 		);
 	}
