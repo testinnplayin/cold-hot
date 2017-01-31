@@ -26,10 +26,12 @@ export class GuessForm extends React.Component {
 		e.stopPropagation();
 		
 		const guess = this.props.userGuess,
-			guessCounter = this.props.guessCounter;
+			guessCounter = this.props.guessCounter,
+			randomNumber = this.props.randomNumber;
 		
 		this.props.dispatch(actions.submitGuess(guess));
 		this.props.dispatch(actions.changeCounter(guessCounter));
+		this.props.dispatch(actions.determineResult(guess, randomNumber));
 	}
 
 	render() {

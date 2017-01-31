@@ -17,7 +17,7 @@ function getRandomNumber() {
 }
 
 function determineOutcome(userGuess, randomNumber) {
-	if (userGuess === randomNumber) {
+	if (userGuess == randomNumber) {
 		return 'Got It!';
 	} else if (Math.abs(randomNumber - userGuess) <= 5) {
 		return 'Hot!';
@@ -72,6 +72,20 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_3);
 
 			return newState_3;
+		case types.DETERMINE_RESULT:
+			let compGuess = action.compGuess,
+				randomNumber = action.randomNumber,
+				result = determineOutcome(compGuess, randomNumber);
+
+			const newState_4 = update(state, {
+				result: {
+					$set: result
+				}
+			});
+
+			console.log(newState_4);
+
+			return newState_4;
 		default:
 			return state;
 	}

@@ -17,3 +17,10 @@ export const changeCounter = (guessCounter) => ({
 	type: CHANGE_COUNTER,
 	guessCounter
 });
+
+export const DETERMINE_RESULT = 'DETERMINE_RESULT';
+export const determineResult = (compGuess, randomNumber) => ({
+	type: DETERMINE_RESULT,
+	compGuess,
+	randomNumber
+});
