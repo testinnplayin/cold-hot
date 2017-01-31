@@ -21,9 +21,9 @@ export class GuessForm extends React.Component {
 
 	handleOnSubmit(e) {
 		console.log('!!!!!!!!!!!');
-		console.log(props);
 		e.preventDefault();
 		e.stopPropagation();
+		
 		const guess = this.props.userGuess;
 		let randomNumber = this.props.randomNumber,
 			guessCounter = this.props.guessState;
