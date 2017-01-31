@@ -7,43 +7,18 @@ import GuessForm from './guess-form';
 
 export class GameBoard extends React.Component {
 	constructor(props) {
-		// debugger;
 		super(props);
 		console.log(props);
-		this.state = {
-			result: 'Make Your Guess!',
-			userGuess: '',
-			guessCounter: 0,
-			guesses: [],
-			randomNumber: Math.floor(Math.random() * 100)
-		};
 
-		this.submitGuess = this.submitGuess.bind(this);
-	}
-
-	submitGuess(e) {
-		console.log('!!!!!!!!!!!');
-		// debugger;
-		e.preventDefault();
-		e.stopPropagation();
-		const userGuess = this.props.userGuessInput.value;
-		let randomNumber = this.props.state.randomNumber,
-			guessCounter = this.props.state.guessState;
-		console.log('submit triggered');
-		console.log(props);
-
-		this.props.dispatch(actions.submitGuess(userGuess, randomNumber, guessCounter));
-		return false;
 	}
 
 	render() {
-		window.thing = this.submitGuess;
 		return (
 			<main className="gameBoard">
-				<p><span>{this.state.result}</span></p>
-				<GuessForm onSubmit={this.submitGuess} />
-				<p><span>Guess # {this.state.guessCounter}</span></p>
-				<p><span>{this.state.guesses}</span></p>
+				<p><span>{this.props.result}</span></p>
+				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} />
+				<p><span>Guess # {this.props.guessCounter}</span></p>
+				<p><span>{this.props.guesses}</span></p>
 			</main>
 		);
 	}

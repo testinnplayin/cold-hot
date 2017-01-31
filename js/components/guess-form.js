@@ -8,13 +8,34 @@ import * as actions from '../actions/index';
 export class GuessForm extends React.Component {
 	constructor(props) {
 		super(props);
-		// console.log(props);
+
+		this.handleChange = this.handleOnChange.bind(this);
+		this.handleOnSubmit = this.handleOnSubmit.bind(this);
+	}
+
+	handleOnChange(e) {
+		console.log(props);
+		let userGuess = e.target.value;
+
+		this.props.dispatch(actions.getInput(userGuess));
+	}
+
+	handleOnSubmit(e) {
+		console.log('!!!!!!!!!!!');
+		console.log(props);
+		e.preventDefault();
+		e.stopPropagation();
+		const guess = this.props.userGuess;
+		let randomNumber = this.props.randomNumber,
+			guessCounter = this.props.guessState;
+		
+		this.props.dispatch(actions.submitGuess(guess, randomNumber, guessCounter));
 	}
 
 	render() {
 		return (
-			<form onSubmit={this.props.onSubmit}>
-					<input type="text" name="userGuess" autoComplete="off" placeholder="Enter Your Guess" onChange={} />
+			<form onSubmit={this.handleOnSubmit}>
+					<input type="text" name="userGuess" autoComplete="off" onChange={this.handleOnChange} />
 					<button type="submit">Guess</button>
 			</form>
 		);
@@ -22,6 +43,3 @@ export class GuessForm extends React.Component {
 };
 
 export default connect()(GuessForm);
-// ref={ref => {this.userGuessInput = ref}}
-// handle change of input in guess_form and dispatch an event which will store the input value of the user into state
-// then use that state on submit to compare with guessed value
