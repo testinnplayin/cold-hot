@@ -8,17 +8,15 @@ import * as actions from '../actions/index';
 export class GuessForm extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(props);
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.handleOnSubmit = this.handleOnSubmit.bind(this);
 	}
 
 	handleOnChange(e) {
-		console.log(props);
 		let userGuess = e.target.value;
 
 		this.props.dispatch(actions.getInput(userGuess));
-		console.log(props);
 	}
 
 	handleOnSubmit(e) {

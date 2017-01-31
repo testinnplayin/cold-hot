@@ -17,13 +17,16 @@ export class Game extends React.Component {
 				<button type="button" className="instructionsButton">Instructions</button>
 				<button type="button" className="newGameButton">New Game</button>
 				<h1>Hot 'N' Cold</h1>
-				<GameBoard />
+				<GameBoard result={this.props.result} guessCounter={this.props.guessCounter}
+				 guesses={this.props.guesses} randomNumber={this.props.randomNumber} 
+				 userGuess={this.props.userGuess} submitGuess={this.props.submitGuess}
+				 getInput={this.props.getInput} />
 			</div>
 		);
 	}
 };
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
 	result: state.result,
 	userGuess: state.userGuess,
 	guessCounter: state.guessCounter,
