@@ -8,6 +8,7 @@ import GameBoard from './game-board';
 export class Game extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log(props);
 	}
 
 	render() {
@@ -22,4 +23,13 @@ export class Game extends React.Component {
 	}
 };
 
-export default connect()(Game);
+const mapStateToProps = (state, props) => ({
+	result: state.result,
+	userGuess: state.userGuess,
+	guessCounter: state.guessCounter,
+	guesses: state.guesses,
+	randomNumber: state.randomNumber
+});
+
+
+export default connect(mapStateToProps)(Game);

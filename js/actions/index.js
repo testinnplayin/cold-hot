@@ -9,7 +9,7 @@ export const submitGuess = (guess, randomNumber, guessCounter) => ({
 });
 
 export const GET_INPUT = 'GET_INPUT';
-export const getInput = (userGuess) => {
+export const getInput = (userGuess) => ({
 	type: handleChange,
 	userGuess
-}
+});

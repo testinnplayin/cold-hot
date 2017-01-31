@@ -9,7 +9,7 @@ export class GuessForm extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.handleChange = this.handleOnChange.bind(this);
+		this.handleOnChange = this.handleOnChange.bind(this);
 		this.handleOnSubmit = this.handleOnSubmit.bind(this);
 	}
 
@@ -18,6 +18,7 @@ export class GuessForm extends React.Component {
 		let userGuess = e.target.value;
 
 		this.props.dispatch(actions.getInput(userGuess));
+		console.log(props);
 	}
 
 	handleOnSubmit(e) {
