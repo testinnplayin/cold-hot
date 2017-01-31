@@ -15,12 +15,13 @@ export class GuessForm extends React.Component {
 
 	handleOnChange(e) {
 		let userGuess = e.target.value;
-
+		console.log(this.props);
 		this.props.dispatch(actions.getInput(userGuess));
 	}
 
 	handleOnSubmit(e) {
 		console.log('!!!!!!!!!!!');
+		console.log(this.props);
 		e.preventDefault();
 		e.stopPropagation();
 		
