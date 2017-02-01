@@ -4,29 +4,34 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import * as actions from '../actions/index';
+import Instructions from './instructions';
 
-export default class InstructionButton extends React.Component {
+export class InstructionButton extends React.Component {
 	constructor(props) {
 		super(props);
 
-		console.log(props);
+		console.log(this.props);
 		this.handleClickOnInstructions = this.handleClickOnInstructions.bind(this);
 	}
 
 	handleClickOnInstructions(e) {
 		e.preventDefault();
 
-		let instructions = this.props.instructions;
-		console.log(props);
-		
+		let instructions = !(this.props.instructions);
+		console.log(this.props);
+
 		this.props.dispatch(actions.showInstructions(instructions));
 	}
 
 	render() {
 		return (
-			<button type="button" onClick={this.handleClickOnInstructions}>Instructions</button>
-			{this.props.instructions ? <Instructions /> : null}
+			<div className="instructionButton">
+				<button type="button" onClick={this.handleClickOnInstructions}>Instructions</button>
+				{this.props.instructions ? <Instructions instructions={this.props.instructions} /> : null}
+			</div>
 		);
 	}
 
 };
+
+export default connect()(InstructionButton);
