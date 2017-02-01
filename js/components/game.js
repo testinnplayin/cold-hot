@@ -13,13 +13,17 @@ export class Game extends React.Component {
 	render() {
 		return (
 			<div className="game">
-				<button type="button" className="instructionsButton">Instructions</button>
-				<button type="button" className="newGameButton">New Game</button>
-				<h1>Hot 'N' Cold</h1>
-				<GameBoard result={this.props.result} guessCounter={this.props.guessCounter}
-				 guesses={this.props.guesses} randomNumber={this.props.randomNumber} 
-				 userGuess={this.props.userGuess} submitGuess={this.props.submitGuess}
-				 getInput={this.props.getInput} />
+				<header>
+					<button type="button" className="instructionsButton">Instructions</button>
+					<button type="button" className="newGameButton">New Game</button>
+					<h1>Hot 'N' Cold</h1>
+				</header>
+				<main>
+					<GameBoard result={this.props.result} guessCounter={this.props.guessCounter}
+					 guesses={this.props.guesses} randomNumber={this.props.randomNumber} 
+					 userGuess={this.props.userGuess} submitGuess={this.props.submitGuess}
+					 getInput={this.props.getInput} />
+				 </main>
 			</div>
 		);
 	}

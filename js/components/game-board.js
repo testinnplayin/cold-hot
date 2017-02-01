@@ -14,13 +14,13 @@ export class GameBoard extends React.Component {
 
 	render() {
 		return (
-			<main className="gameBoard">
+			<section className="gameBoard">
 				<p><span>{this.props.result}</span></p>
 				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} guessCounter={this.props.guessCounter}
 				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 				<p><span>Guess # {this.props.guessCounter}</span></p>
 				<GuessList guesses={this.props.guesses} />
-			</main>
+			</section>
 		);
 	}
 }
