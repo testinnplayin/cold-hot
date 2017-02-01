@@ -8,7 +8,8 @@ const initialState = {
 	userGuess: '',
 	guessCounter: 0,
 	guesses: [],
-	randomNumber: getRandomNumber()
+	randomNumber: getRandomNumber(),
+	instructions: false
 };
 
 function getRandomNumber() {
@@ -100,7 +101,18 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_5);
 
 			return newState_5;
+		case types.SHOW_INSTRUCTIONS:
+			let instructions = action.instructions;
 
+			const newState_6 = update(state, {
+				instructions: {
+					$set: instructions
+				}
+			});
+
+			console.log(newState_6);
+
+			return newState_6;
 		default:
 			return state;
 	}

@@ -31,3 +31,9 @@ export const showGuesses = (guesses, singleGuess) => ({
 	guesses,
 	singleGuess
 });
+
+export const SHOW_INSTRUCTIONS = 'SHOW_INSTRUCTIONS';
+export const showInstructions = (instructions) => ({
+	type: SHOW_INSTRUCTIONS,
+	instructions
+});

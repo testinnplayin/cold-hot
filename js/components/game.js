@@ -4,6 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import GameBoard from './game-board';
+import InstructionButton from './instruction-button';
 
 export class Game extends React.Component {
 	constructor(props) {
@@ -14,7 +15,7 @@ export class Game extends React.Component {
 		return (
 			<div className="game">
 				<header>
-					<button type="button" className="instructionsButton">Instructions</button>
+					<InstructionButton showInstructions={this.props.showInstructions} instructions={this.props.instructions} />
 					<button type="button" className="newGameButton">New Game</button>
 					<h1>Hot 'N' Cold</h1>
 				</header>
@@ -34,7 +35,8 @@ const mapStateToProps = (state) => ({
 	userGuess: state.userGuess,
 	guessCounter: state.guessCounter,
 	guesses: state.guesses,
-	randomNumber: state.randomNumber
+	randomNumber: state.randomNumber,
+	instructions: state.instructions
 });
 
 
