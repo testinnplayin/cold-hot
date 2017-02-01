@@ -33,6 +33,14 @@ function changeCounter(guessCounter) {
 	return newCounter;
 }
 
+function iterateGuesses(guesses) {
+	guesses.map(guess => {
+		return (
+			<span className="guessElement">{guess}</span>
+		);
+	});
+}
+
 export const gameReducer = (state=initialState, action) => {
 	switch(action.type) {
 		case types.SUBMIT_GUESS:
@@ -86,6 +94,21 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_4);
 
 			return newState_4;
+
+		case types.SHOW_GUESSES:
+			let guesses = action.guesses,
+				singleGuess = action.singleGuess;
+
+			const newState_5 = update(state, {
+				guesses: {
+					$push: [singleGuess]
+				}
+			});
+
+			console.log(newState_5);
+
+			return newState_5;
+
 		default:
 			return state;
 	}

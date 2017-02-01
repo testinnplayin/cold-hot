@@ -24,3 +24,10 @@ export const determineResult = (compGuess, randomNumber) => ({
 	compGuess,
 	randomNumber
 });
+
+export const SHOW_GUESSES = 'SHOW_GUESSES';
+export const showGuesses = (guesses, singleGuess) => ({
+	type: SHOW_GUESSES,
+	guesses,
+	singleGuess
+});
