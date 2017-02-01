@@ -8,7 +8,7 @@ import GuessForm from './guess-form';
 let showGuesses = function (guesses) {
 	guesses.map(guess => {
 		return (
-			<span className="guessElement">{guess}</span>
+			<span className="guessElement">{this.props.guess}</span>
 		);
 	});
 };
