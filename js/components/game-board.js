@@ -4,19 +4,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import GuessForm from './guess-form';
-
-let showGuesses = function (guesses) {
-	guesses.map(guess => {
-		return (
-			<span className="guessElement">{this.props.guess}</span>
-		);
-	});
-};
+import GuessList from './guess-list';
 
 export class GameBoard extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 	}
 
@@ -27,7 +19,7 @@ export class GameBoard extends React.Component {
 				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} guessCounter={this.props.guessCounter}
 				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 				<p><span>Guess # {this.props.guessCounter}</span></p>
-				<p><span>{showGuesses}</span></p>
+				<GuessList guesses={this.props.guesses} />
 			</main>
 		);
 	}

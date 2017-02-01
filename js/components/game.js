@@ -8,7 +8,6 @@ import GameBoard from './game-board';
 export class Game extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 	}
 
 	render() {
