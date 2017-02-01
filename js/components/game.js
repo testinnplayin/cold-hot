@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 import GameBoard from './game-board';
 import InstructionButton from './instruction-button';
+import NewGameButton from './newgame-button';
 
 export class Game extends React.Component {
 	constructor(props) {
@@ -16,7 +17,8 @@ export class Game extends React.Component {
 			<div className="game">
 				<header>
 					<InstructionButton showInstructions={this.props.showInstructions} instructions={this.props.instructions} />
-					<button type="button" className="newGameButton">New Game</button>
+					<NewGameButton resetGame={this.props.resetGame} result={this.props.result} userGuess={this.props.userGuess} guessCounter={this.props.guessCounter}
+					 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 					<h1>Hot 'N' Cold</h1>
 				</header>
 				<main>

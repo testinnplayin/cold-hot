@@ -7,7 +7,7 @@ export default function GuessList(props) {
 
 	const guess = guesses.map((gContent, i) => {
 		return (
-			<span key={i}>{gContent}</span>
+			<span key={i} value={gContent}>{gContent}</span>
 		);
 	});
 

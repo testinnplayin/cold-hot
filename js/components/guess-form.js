@@ -34,8 +34,8 @@ export class GuessForm extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleOnSubmit}>
-					<input type="text" name="userGuess" autoComplete="off" onChange={this.handleOnChange} placeholder="Enter Your Guess" />
+			<form onSubmit={this.handleOnSubmit} name="guessForm" className="guessForm">
+					<input type="text" name="userGuess" autoComplete="off" onChange={this.handleOnChange} placeholder="Enter Your Guess" value={this.props.userGuess} />
 					<button type="submit">Guess</button>
 			</form>
 		);

@@ -10,7 +10,6 @@ export class InstructionButton extends React.Component {
 	constructor(props) {
 		super(props);
 
-		console.log(this.props);
 		this.handleClickOnInstructions = this.handleClickOnInstructions.bind(this);
 	}
 
@@ -18,7 +17,6 @@ export class InstructionButton extends React.Component {
 		e.preventDefault();
 
 		let instructions = !(this.props.instructions);
-		console.log(this.props);
 
 		this.props.dispatch(actions.showInstructions(instructions));
 	}

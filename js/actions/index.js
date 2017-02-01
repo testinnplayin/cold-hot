@@ -37,3 +37,9 @@ export const showInstructions = (instructions) => ({
 	type: SHOW_INSTRUCTIONS,
 	instructions
 });
+
+export const RESET_GAME = 'RESET_GAME';
+export const resetGame = (currUserGuess) => ({
+	type: RESET_GAME,
+	currUserGuess
+});

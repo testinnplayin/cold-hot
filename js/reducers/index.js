@@ -113,6 +113,11 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_6);
 
 			return newState_6;
+		case types.RESET_GAME:
+			let currUserGuess = action.currUserGuess;
+
+			console.log(initialState);
+			return initialState;
 		default:
 			return state;
 	}
