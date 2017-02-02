@@ -114,10 +114,19 @@ export const gameReducer = (state=initialState, action) => {
 
 			return newState_6;
 		case types.RESET_GAME:
-			let currUserGuess = action.currUserGuess;
+			let currRandomNum = action.currUserGuess,
+				newRandomNum = getRandomNumber(),
+				newState = initialState;
 
-			console.log(initialState);
-			return initialState;
+			const newState_7 = update(newState, {
+				randomNumber: {
+					$set: newRandomNum
+				}
+			});
+
+			console.log(newState_7);
+
+			return newState_7;
 		default:
 			return state;
 	}
