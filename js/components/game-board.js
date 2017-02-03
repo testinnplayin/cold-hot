@@ -1,29 +1,28 @@
 'use strict';
 
 import React from 'react';
+import {connect} from 'react-redux';
 
 import GuessForm from './guess-form';
+import GuessList from './guess-list';
 
-export default class GameBoard extends React.Component {
+export class GameBoard extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			result: 'Make Your Guess!',
-			userGuess: '',
-			guessCounter: 0,
-			guesses: []
-		};
 	}
 
 	render() {
 		return (
-			<main className="gameBoard">
-				<p><span>{this.state.result}</span></p>
-				<GuessForm />
-				<p><span>Guess # {this.state.guessCounter}</span></p>
-				<p><span>{this.state.guesses}</span></p>
-			</main>
+			<section className="gameBoard">
+				<p><span value={this.props.result}>{this.props.result}</span></p>
+				<GuessForm getInput={this.props.getInput} submitGuess={this.props.submitGuess} userGuess={this.props.userGuess} guessCounter={this.props.guessCounter}
+				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
+				<p><span value={this.props.guessCounter}>Guess # {this.props.guessCounter}</span></p>
+				<GuessList guesses={this.props.guesses} />
+			</section>
 		);
 	}
 }
+
+export default connect()(GameBoard);
