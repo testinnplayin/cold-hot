@@ -43,3 +43,9 @@ export const resetGame = (currUserGuess) => ({
 	type: RESET_GAME,
 	currUserGuess
 });
+
+export const FETCH_FEWEST_GUESSES_SUCCESS = 'FETCH_FEWEST_GUESSES_SUCCESS';
+export const fetchFewestGuessesSuccess = (fewestGuesses) => ({
+	type: FETCH_FEWEST_GUESSES_SUCCESS,
+	fewestGuesses
+});
