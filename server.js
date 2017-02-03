@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const {DATABASE_URL, PORT} = require('./config');
+const {Guess} = require('./models');
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 
 let server;
 
-function runServer (databaseUrl= DATABASE_URL, port=PORT) {
+function runServer(databaseUrl= DATABASE_URL, port=PORT) {
 	return new Promise((resolve, reject) => {
 		mongoose.connect(databaseUrl, function(err) {
 			if (err) {
@@ -40,6 +41,24 @@ function runServer (databaseUrl= DATABASE_URL, port=PORT) {
 	});
 }
 
+function closeServer() {
+	return mongoose.disconnect()
+		.then(() => {
+			return new Promise(function(resolve, reject) {
+				console.log('Closing server');
+				server.close(function(err) {
+					if (err) {
+						return reject(err);
+					}
+
+					resolve();
+				});
+			});
+		});
+}
+
 if (require.main === module) {
 	runServer().catch(err => console.error(err));
 }
+
+module.exports = {app, runServer, closeServer};
