@@ -138,6 +138,16 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_8);
 
 			return newState_8;
+		case types.FETCH_FEWEST_GUESSES_ERROR:
+			let fewestGuessesError = action. fewestGuessesError;
+
+			const newState_9 = update(state, {
+				fewestGuesses: 'N/A'
+			});
+
+			console.log(newState_9);
+
+			return newState_9;
 		default:
 			return state;
 	}
