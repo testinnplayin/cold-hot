@@ -8,8 +8,6 @@ const {DATABASE_URL, PORT} = require('./config');
 
 const app = express();
 
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('common'));
@@ -21,10 +19,27 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-app.listen(PORT, err => {
-	if (err) {
-		return console.error('Internal server error');
-	}
+let server;
 
-	console.log(`Server listening on port ${PORT}`);
-})
+function runServer (databaseUrl= DATABASE_URL, port=PORT) {
+	return new Promise((resolve, reject) => {
+		mongoose.connect(databaseUrl, function(err) {
+			if (err) {
+				return reject(err);
+			}
+
+			app.listen(port, function() {
+				console.log(`Your app is listening on port ${port}`);
+				resolve();
+			})
+			.on('error', function(err) {
+				mongoose.disconnect();
+				reject(err);
+			});
+		});
+	});
+}
+
+if (require.main === module) {
+	runServer().catch(err => console.error(err));
+}
