@@ -11,7 +11,7 @@ const guessSchema = mongoose.Schema({
 guessSchema.methods.apiRepr = function() {
 	return {
 		id: this._id,
-		numberOfGuesses: this.numberOfGuesses
+		game: this.game
 	};
 };
 
