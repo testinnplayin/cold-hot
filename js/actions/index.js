@@ -1,5 +1,7 @@
 'use strict';
 
+import 'isomorphic-fetch';
+
 export const SUBMIT_GUESS = 'SUBMIT_GUESS';
 export const submitGuess = (guess) => ({
 	type: SUBMIT_GUESS,
@@ -55,3 +57,17 @@ export const fetchFewestGuessesError = (fewestGuessesError) => ({
 	type: FETCH_FEWEST_GUESSES_ERROR,
 	fewestGuessesError
 });
+
+export const fetchFewestGuesses = fewestGuesses => dispatch => {
+	let endpt = '/fewest-guesses',
+		reqOpts = {
+			method: 'GET'
+		},
+		getReq = new Request(endpt, reqOpts);
+
+	fetch(getReq)
+	.then((response) => {
+		if ()
+	});
+
+};
