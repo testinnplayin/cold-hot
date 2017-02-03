@@ -13,7 +13,24 @@ router.get('/', (req, res) => {
 	.find()
 	.exec()
 	.then(function(guesses) {
-		res.json({games: guesses.map(guess => guess.apiRepr())
+		let gamesObj = {
+			games: guesses.map(guess => guess.apiRepr())
+		},
+			gamesArr = gamesObj.games,
+			gamesLng = gamesArr.length,
+			numsArr = [];
+
+		for (let i = 0; i < gamesLng; i++) {
+			let gameObj = gamesArr[i],
+				num = parseInt(gameObj.game.numberOfGuesses);
+
+			numsArr.push(num);
+		}
+
+		let min = Math.min(...numsArr);
+
+		res.json({
+			fewestGuesses: min
 		});
 	})
 	.catch(function(err) {
@@ -25,8 +42,6 @@ router.get('/', (req, res) => {
 router.post('/', jsonParser, (req, res) => {
 	const requiredFields = ['numberOfGuesses'];
 	let lng = requiredFields.length;
-
-	console.log(req.body);
 	
 	for (let i = 0; i < lng; i++) {
 		let field = requiredFields[i];
