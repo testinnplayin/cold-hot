@@ -1,16 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
+
 const path = require('path');
 const mongoose = require('mongoose');
 
 const {DATABASE_URL, PORT} = require('./config');
-const {Guess} = require('./models');
+const guessesRouter = require('./guessesRouter');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('common'));
 app.use(express.static('build'));
 
@@ -19,6 +17,8 @@ mongoose.Promise = global.Promise;
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../build/index.html'));
 });
+
+app.use('/fewest-guesses', guessesRouter);
 
 let server;
 

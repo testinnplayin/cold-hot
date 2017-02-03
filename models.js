@@ -8,6 +8,13 @@ const guessSchema = mongoose.Schema({
 	}
 });
 
+guessSchema.methods.apiRepr = function() {
+	return {
+		id: this._id,
+		numberOfGuesses: this.numberOfGuesses
+	};
+};
+
 const Guess = mongoose.model('Guess', guessSchema);
 
 module.exports = {Guess};
