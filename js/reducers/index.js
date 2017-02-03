@@ -9,7 +9,8 @@ const initialState = {
 	guessCounter: 0,
 	guesses: [],
 	randomNumber: getRandomNumber(),
-	instructions: false
+	instructions: false,
+	fewestGuesses: 0
 };
 
 function getRandomNumber() {
@@ -127,6 +128,16 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_7);
 
 			return newState_7;
+		case types.FETCH_FEWEST_GUESSES_SUCCESS:
+			let fewestGuesses = action.fewestGuesses;
+
+			const newState_8 = update(state, {
+				fewestGuesses: fewestGuesses
+			});
+
+			console.log(newState_8);
+
+			return newState_8;
 		default:
 			return state;
 	}
