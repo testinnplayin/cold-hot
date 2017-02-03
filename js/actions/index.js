@@ -49,3 +49,9 @@ export const fetchFewestGuessesSuccess = (fewestGuesses) => ({
 	type: FETCH_FEWEST_GUESSES_SUCCESS,
 	fewestGuesses
 });
+
+export const FETCH_FEWEST_GUESSES_ERROR = 'FETCH_FEWEST_GUESSES_ERROR';
+export const fetchFewestGuessesError = (fewestGuessesError) => ({
+	type: FETCH_FEWEST_GUESSES_ERROR,
+	fewestGuessesError
+});
