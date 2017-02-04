@@ -5,11 +5,16 @@ import {connect} from 'react-redux';
 
 import GuessForm from './guess-form';
 import GuessList from './guess-list';
+import * as actions from '../actions/index';
 
 export class GameBoard extends React.Component {
 	constructor(props) {
 		super(props);
 
+	}
+
+	componentDidMount() {
+		this.props.dispatch(actions.fetchFewestGuesses(this.props.fewestGuesses));
 	}
 
 	render() {
@@ -20,6 +25,7 @@ export class GameBoard extends React.Component {
 				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 				<p><span value={this.props.guessCounter}>Guess # {this.props.guessCounter}</span></p>
 				<GuessList guesses={this.props.guesses} />
+				<p><span>{this.props.fewestGuesses}</span></p>
 			</section>
 		);
 	}

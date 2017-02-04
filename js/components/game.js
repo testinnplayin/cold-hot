@@ -24,7 +24,7 @@ export class Game extends React.Component {
 					<GameBoard result={this.props.result} guessCounter={this.props.guessCounter}
 					 guesses={this.props.guesses} randomNumber={this.props.randomNumber} 
 					 userGuess={this.props.userGuess} submitGuess={this.props.submitGuess}
-					 getInput={this.props.getInput} />
+					 getInput={this.props.getInput} fewestGuesses={this.props.fewestGuesses} />
 				 </main>
 			</div>
 		);
@@ -37,7 +37,8 @@ const mapStateToProps = (state) => ({
 	guessCounter: state.guessCounter,
 	guesses: state.guesses,
 	randomNumber: state.randomNumber,
-	instructions: state.instructions
+	instructions: state.instructions,
+	fewestGuesses: state.fewestGuesses
 });
 
 

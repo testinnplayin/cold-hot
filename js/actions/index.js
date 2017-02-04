@@ -8,7 +8,7 @@ export const submitGuess = (guess) => ({
 	guess
 });
 
-export const GET_INPUT = 'GET_INPUT';
+export const GET_INPUT = 'GET_INPUT';//INPUT_CHANGE
 export const getInput = (userGuess) => ({
 	type: GET_INPUT,
 	userGuess
@@ -53,9 +53,9 @@ export const fetchFewestGuessesSuccess = (fewestGuesses) => ({
 });
 
 export const FETCH_FEWEST_GUESSES_ERROR = 'FETCH_FEWEST_GUESSES_ERROR';
-export const fetchFewestGuessesError = (fewestGuessesError) => ({
+export const fetchFewestGuessesError = (error) => ({
 	type: FETCH_FEWEST_GUESSES_ERROR,
-	fewestGuessesError
+	error
 });
 
 export const fetchFewestGuesses = fewestGuesses => dispatch => {
@@ -67,7 +67,50 @@ export const fetchFewestGuesses = fewestGuesses => dispatch => {
 
 	fetch(getReq)
 	.then((response) => {
-		if ()
-	});
+		if (!response.ok) {
+			const error = new Error(response.statusText);
+			error.response;
+			throw error;
+		}
 
+		return response;
+	})
+	.then(response => response.json())
+	.then(data => dispatch(fetchFewestGuessesSuccess(data.fewestGuesses)))
+	.catch(error => dispatch(fetchFewestGuessesError(error)));
+
+};
+
+export const SAVE_FEWEST_GUESSES_SUCCESS = 'SAVE_FEWEST_GUESSES_SUCCESS';
+export const saveFewestGuessesSuccess = (saveFewestGuesses) => ({
+	type: SAVE_FEWEST_GUESSES_SUCCESS,
+	saveFewestGuesses
+});
+
+export const SAVE_FEWEST_GUESSES_ERROR = 'SAVE_FEWEST_GUESSES_ERROR';
+export const saveFewestGuessesError = (saveError) => ({
+	type: SAVE_FEWEST_GUESSES_ERROR,
+	saveError
+});
+
+export const saveFewestGuesses = saveFewestGuesses => dispatch => {
+	let endpt = '/fewest-guesses',
+		reqOpts = {
+			method: 'POST'
+		},
+		postReq = new Request(endpt, reqOpts);
+
+		fetch(postReq)
+		.then(response => {
+			if (!response.ok) {
+				const error = new Error(response.statusText);
+				error.response;
+				throw error;
+			}
+
+			return response;
+		})
+		.then(response => response.json())
+		.then(data => dispatch(saveFewestGuessesSuccess(data.saveFewestGuesses)))
+		.catch(saveError => dispatch(saveFewestGuessesError(saveError)));
 };
