@@ -1,5 +1,5 @@
-{"numberOfGuesses" : "10"}
-{"numberOfGuesses" : "8"}
-{"numberOfGuesses" : "12"}
-{"numberOfGuesses" : "14"}
-{"numberOfGuesses" : "16"}
+{"game": {"numberOfGuesses" : "10"}}
+{"game": {"numberOfGuesses" : "11"}}
+{"game": {"numberOfGuesses" : "12"}}
+{"game": {"numberOfGuesses" : "13"}}
+{"game": {"numberOfGuesses" : "14"}}

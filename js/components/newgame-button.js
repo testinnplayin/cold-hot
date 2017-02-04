@@ -19,6 +19,7 @@ export class NewGameButton extends React.Component {
 		let currUserGuess = this.props.userGuess;
 
 		this.props.dispatch(actions.resetGame(currUserGuess));
+		this.props.dispatch(actions.fetchFewestGuesses(this.props.fewestGuesses));
 	}
 
 	render() {

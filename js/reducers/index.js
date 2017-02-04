@@ -36,7 +36,7 @@ function changeCounter(guessCounter) {
 
 export const gameReducer = (state=initialState, action) => {
 	switch(action.type) {
-		case types.SUBMIT_GUESS:
+		case types.SUBMIT_GUESS://actions named on what has happened
 			let guess = action.guess
 
 			const newState_1 = update(state, {
@@ -127,6 +127,52 @@ export const gameReducer = (state=initialState, action) => {
 			console.log(newState_7);
 
 			return newState_7;
+		case types.FETCH_FEWEST_GUESSES_SUCCESS:
+			let fewestGuesses = action.fewestGuesses;
+
+			const newState_8 = update(state, {
+				fewestGuesses: {
+					$set: fewestGuesses
+				}
+			});
+
+			console.log(newState_8);
+
+			return newState_8;
+		case types.FETCH_FEWEST_GUESSES_ERROR:
+			let error = action.error;
+
+			const newState_9 = update(state, {
+				fewestGuesses: error
+			});
+
+			console.log(newState_9);
+
+			return newState_9;
+		case types.SAVE_FEWEST_GUESSES_SUCCESS:
+			let saveFewestGuesses = action.fewestGuesses;
+
+			const newState_10 = update(state, {
+				fewestGuesses: {
+					$set: saveFewestGuesses
+				}
+			});
+
+			console.log(newState_10);
+
+			return newState_10;
+		case types.SAVE_FEWEST_GUESSES_ERROR:
+			let saveError = action.saveError;
+
+			const newState_11 = update(state, {
+				fewestGuesses: {
+					$set: saveError
+				}
+			});
+
+			console.log(newState_11);
+
+			return newState_11;
 		default:
 			return state;
 	}

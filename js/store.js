@@ -1,7 +1,9 @@
 'use strict';
 
-import {createStore} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
 
 import * as reducers from './reducers/index';
 
-export default createStore(reducers.gameReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export default createStore(reducers.gameReducer, composeEnhancers(applyMiddleware(thunk)));
