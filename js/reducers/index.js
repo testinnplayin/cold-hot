@@ -152,7 +152,7 @@ export const gameReducer = (state=initialState, action) => {
 		case types.SAVE_FEWEST_GUESSES_SUCCESS:
 			let saveFewestGuesses = action.fewestGuesses;
 
-			const newState_10 = udpate(state, {
+			const newState_10 = update(state, {
 				fewestGuesses: {
 					$set: saveFewestGuesses
 				}

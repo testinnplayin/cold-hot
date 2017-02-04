@@ -96,7 +96,13 @@ export const saveFewestGuessesError = (saveError) => ({
 export const saveFewestGuesses = saveFewestGuesses => dispatch => {
 	let endpt = '/fewest-guesses',
 		reqOpts = {
-			method: 'POST'
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				numberOfGuesses: saveFewestGuesses
+			})
 		},
 		postReq = new Request(endpt, reqOpts);
 

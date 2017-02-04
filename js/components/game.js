@@ -17,7 +17,7 @@ export class Game extends React.Component {
 			<div className="game">
 				<header>
 					<InstructionButton showInstructions={this.props.showInstructions} instructions={this.props.instructions} />
-					<NewGameButton resetGame={this.props.resetGame} randomNumber={this.props.randomNumber} />
+					<NewGameButton resetGame={this.props.resetGame} randomNumber={this.props.randomNumber} fewestGuesses={this.props.fewestGuesses}  />
 					<h1>Hot 'N' Cold</h1>
 				</header>
 				<main>
