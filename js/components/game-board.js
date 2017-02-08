@@ -32,7 +32,7 @@ export class GameBoard extends React.Component {
 				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 				<p><span value={this.props.guessCounter}>Guess # {this.props.guessCounter}</span></p>
 				<GuessList guesses={this.props.guesses} />
-				<p><span>Fewest Guesses: {this.props.fewestGuesses}{this.persistentFewest}</span></p>
+				<p><span>Fewest Guesses: {this.props.fewestGuesses || this.persistentFewest}</span></p>
 			</section>
 		);
 	}
