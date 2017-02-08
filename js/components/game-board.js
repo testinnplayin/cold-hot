@@ -21,6 +21,7 @@ export class GameBoard extends React.Component {
 
 		if (this.props.result === 'Got It!') {
 			if(typeof(this.props.fewestGuesses) !== 'undefined'){ this.persistentFewest = this.props.fewestGuesses }
+			console.info('I think this inconsitency may be caused by an omission in the mongoose POST. I think it just needs to have fewestGuesses queried/found/and returned along with the rest of the data');
 			console.log(this.persistentFewest,this.props.fewestGuesses,this.props.guessCounter);
 			this.props.dispatch(actions.saveFewestGuesses(this.props.guessCounter));
 		}
