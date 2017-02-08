@@ -10,7 +10,7 @@ import * as actions from '../actions/index';
 export class GameBoard extends React.Component {
 	constructor(props) {
 		super(props);
-
+		this.persistentFewest = '';
 	}
 
 	componentDidMount() {
@@ -20,8 +20,8 @@ export class GameBoard extends React.Component {
 	render() {
 
 		if (this.props.result === 'Got It!') {
-
-			console.log(this.props.guessCounter);
+			if(typeof(this.props.fewestGuesses) !== 'undefined'){ this.persistentFewest = this.props.fewestGuesses }
+			console.log(this.persistentFewest,this.props.fewestGuesses,this.props.guessCounter);
 			this.props.dispatch(actions.saveFewestGuesses(this.props.guessCounter));
 		}
 
@@ -32,7 +32,7 @@ export class GameBoard extends React.Component {
 				 randomNumber={this.props.randomNumber} guesses={this.props.guesses} />
 				<p><span value={this.props.guessCounter}>Guess # {this.props.guessCounter}</span></p>
 				<GuessList guesses={this.props.guesses} />
-				<p><span>Fewest Guesses: {this.props.fewestGuesses}</span></p>
+				<p><span>Fewest Guesses: {this.props.fewestGuesses}{this.persistentFewest}</span></p>
 			</section>
 		);
 	}
